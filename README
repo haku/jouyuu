@@ -8,3 +8,4 @@ cd .jouyuu
 cp .jouyuu/* .
 <edit config>
 <edit exclude>
+<add to crontab>
