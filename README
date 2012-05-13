@@ -1,4 +1,10 @@
+Configurable script for rsync backup.
+
 == Install ==
 
-cp -r .jouyou ../
-<exit config>
+cd
+git clone <path to repo> .jouyuu
+cd .jouyuu
+cp .jouyuu/* .
+<edit config>
+<edit exclude>
