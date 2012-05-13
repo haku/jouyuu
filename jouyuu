@@ -19,7 +19,7 @@ REMOTE_LOG_FILE="~/bu-${JOUYUU_FROM_TAG}-${JOUYUU_TO_TAG}.log"
 
 ssh "${JOUYUU_SERVER}" "touch ${REMOTE_LOG_FILE} ; echo \"$(date) starting...\" >> ${REMOTE_LOG_FILE}"
 /usr/bin/rsync -e ssh -rt --partial --progress \
- --delete --delete-after \
+ --links --delete --delete-after \
  --log-file="${LOG_FILE}" \
  --exclude-from="${EXCLUDE_FILE}" \
  "${HOME}" "${JOUYUU_SERVER}:${JOUYUU_SERVER_PATH}/"
