@@ -1,0 +1,4 @@
+== Install ==
+
+cp -r .jouyou ../
+<exit config>
