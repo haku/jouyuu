@@ -16,12 +16,12 @@ fi
 
 LOG_FILE="${CONFIG_DIR}/bu-${JOUYUU_TO_TAG}.log"
 
-ssh "${JOUYOU_SERVER}" "echo \"$(date) starting...\" >> ~/bu-${JOUYUU_FROM_TAG}-${JOUYUU_TO_TAG}.log"
+ssh "${JOUYUU_SERVER}" "echo \"$(date) starting...\" >> ~/bu-${JOUYUU_FROM_TAG}-${JOUYUU_TO_TAG}.log"
 /usr/bin/rsync -e ssh -rt --partial --progress \
  --delete --delete-after \
  --log-file="${LOG_FILE}" \
  --exclude-from="${EXCLUDE_FILE}" \
- "${HOME}" "${JOUYOU_SERVER}:${JOUYUU_SERVER_PATH}/"
+ "${HOME}" "${JOUYUU_SERVER}:${JOUYUU_SERVER_PATH}/"
 RES=$?
-ssh "${JOUYOU_SERVER}" "echo \"$(date) rsync=${RES}\" >> ~/bu-${JOUYUU_FROM_TAG}-${JOUYUU_TO_TAG}.log"
+ssh "${JOUYUU_SERVER}" "echo \"$(date) rsync=${RES}\" >> ~/bu-${JOUYUU_FROM_TAG}-${JOUYUU_TO_TAG}.log"
 
