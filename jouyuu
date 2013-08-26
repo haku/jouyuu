@@ -18,13 +18,13 @@ LOG_FILE="${CONFIG_DIR}/bu-${JOUYUU_TO_TAG}.log"
 
 set +e # Can not find an alt for $?
 ssh "${JOUYUU_SERVER}" \
- "touch ${JOUYUU_SERVER_LOG_FILE} ; echo \"$(date) starting...\" >> ${JOUYUU_SERVER_LOG_FILE}"
-/usr/bin/rsync -e ssh -rt --partial --progress \
+ "touch ${JOUYUU_SERVER_LOG_FILE} ; echo \"time=\$(date +%s) starting...\" >> ${JOUYUU_SERVER_LOG_FILE}"
+/usr/bin/rsync -e ssh -rt --partial --verbose \
  --links --delete --delete-after \
  --log-file="${LOG_FILE}" \
  --exclude-from="${EXCLUDE_FILE}" \
  "${HOME}" "${JOUYUU_SERVER}:${JOUYUU_SERVER_PATH}/"
 RES=$?
 ssh "${JOUYUU_SERVER}" \
- "echo \"$(date) rsync=${RES}\" >> ${JOUYUU_SERVER_LOG_FILE}"
+ "echo \"time=\$(date +%s) rsync=${RES}\" >> ${JOUYUU_SERVER_LOG_FILE}"
 
